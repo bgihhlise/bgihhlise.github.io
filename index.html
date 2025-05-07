@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Beylikdüzü Genç İHH Lise Birimi Görev Listesi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <!-- marked.js: client‑side Markdown dönüştürücü -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <!-- LOGIN EKRANI -->
+  <div id="login-wrapper" class="center card">
+    <img src="ihh.png" alt="İHH Logo" draggable="false" aria-hidden="true" style="width: 120px; display: block; margin: 0 auto 1.2rem auto; border-radius: 1rem; box-shadow: 0 2px 12px #7ed95722;">
+    <h2>Giriş Yap</h2>
+    <input type="password" id="pwd" placeholder="Şifre" autofocus />
+    <button id="btn-login">Giriş</button>
+    <p id="msg" class="error"></p>
+  </div>
+
+  <!-- İÇERİK EKRANI -->
+  <div id="content-wrapper" style="display:none;">
+    <div id="session-bar">
+      <span id="session-timer"></span>
+      <button id="logout-btn" title="Oturumu Kapat">✕</button>
+    </div>
+    <header class="site-header">
+      <h1>Beylikdüzü Genç İHH Lise Birimi</h1>
+    </header>
+    <main>
+      <article id="markdown-container" class="card"></article>
+    </main>
+    <footer class="site-footer">
+      <span>© 2025 Beylikdüzü Genç İHH Lise Birimi</span>
+    </footer>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

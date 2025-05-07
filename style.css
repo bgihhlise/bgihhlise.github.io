@@ -1,0 +1,321 @@
+:root {
+  --primary: #7ed957;
+  --primary-dark: #3a7d3a;
+  --bg: #f6fff8;
+  --surface: #ffffffcc;
+  --text: #1a2e22;
+  --muted: #7ba97a;
+  --radius: 1.5rem;
+  --shadow: 0 8px 32px 0 rgba(126,217,87,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.04);
+  --transition: 0.18s cubic-bezier(.4,0,.2,1);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-header {
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 16px 0 rgba(126,217,87,0.08);
+  padding: 0.7rem 0 0.7rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 8px #eaffea;
+}
+
+.site-footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 1rem;
+  margin: 2.5rem 0 1.5rem 0;
+  letter-spacing: 0.02em;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+  backdrop-filter: blur(2px);
+}
+
+.card:focus-within, .card:hover {
+  box-shadow: 0 12px 40px 0 rgba(126,217,87,0.18), 0 2px 8px 0 rgba(0,0,0,0.07);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.center {
+  min-width: 320px;
+  max-width: 370px;
+  margin: 8vh auto 0 auto;
+  padding: 2.5rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+}
+
+input, button {
+  width: 100%;
+  padding: .95rem 1.1rem;
+  margin-top: .7rem;
+  font-size: 1rem;
+  border-radius: .9rem;
+  border: 1.5px solid #d7f7d7;
+  outline: none;
+  transition: border var(--transition), box-shadow var(--transition);
+  box-sizing: border-box;
+  background: #f6fff8;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px #7ed95733;
+}
+
+button {
+  background: linear-gradient(90deg, #7ed957 0%, #b6f7b6 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  margin-top: 1.2rem;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 8px 0 rgba(126,217,87,0.10);
+  cursor: pointer;
+}
+
+button:hover, button:focus {
+  background: linear-gradient(90deg, #3a7d3a 0%, #7ed957 100%);
+  box-shadow: 0 4px 16px 0 rgba(58,125,58,0.13);
+  transform: translateY(-1px) scale(1.01);
+}
+
+.error {
+  color: #e11d48;
+  font-size: .98rem;
+  margin-top: .7rem;
+  min-height: 1.2em;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  pointer-events: none;
+}
+
+article.card {
+  margin: 2.5rem auto 0 auto;
+  padding: 2.5rem 2.2rem;
+  max-width: 900px;
+  width: 100%;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 6px solid var(--primary);
+  animation: fadeIn 0.7s;
+}
+
+@media (max-width: 600px) {
+  .center, article.card {
+    padding: 1.2rem 0.7rem;
+    min-width: unset;
+    max-width: 98vw;
+  }
+  .site-header {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Markdown içeriği için modern stiller */
+article h1, article h2, article h3 {
+  color: var(--primary-dark);
+  margin-top: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  border-bottom: 2px solid #eaffea;
+  padding-bottom: 0.3em;
+  letter-spacing: 0.01em;
+}
+
+article h1 {
+  font-size: 1.5rem;
+}
+
+article h2 {
+  font-size: 1.4rem;
+}
+
+article h3 {
+  font-size: 1.15rem;
+}
+
+article ul {
+  padding-left: 1.3em;
+  margin-bottom: 1.2em;
+  list-style: disc inside;
+}
+
+article li {
+  margin-bottom: .5em;
+}
+
+article p, article li {
+  color: var(--text);
+  font-size: 1.07em;
+}
+
+article code {
+  background: #eaffea;
+  padding: 0.22em 0.5em;
+  border-radius: 0.5em;
+  font-size: 0.97em;
+  color: var(--primary-dark);
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace;
+}
+
+article pre {
+  background: #eaffea;
+  padding: 1em;
+  border-radius: 0.9em;
+  overflow-x: auto;
+  font-size: 0.97em;
+  margin-bottom: 1.5em;
+  color: var(--primary-dark);
+  border-left: 4px solid var(--primary);
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+#session-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  padding: 0.7rem 2.2rem 0 0;
+}
+
+#session-timer {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  background: #eaffea;
+  padding: 0.25em 0.8em;
+  border-radius: 1em;
+  letter-spacing: 0.04em;
+  box-shadow: 0 1px 4px #7ed95722;
+}
+
+#logout-btn {
+  background: #fff;
+  color: #e11d48;
+  border: none;
+  border-radius: 50%;
+  width: 2.1em;
+  height: 2.1em;
+  font-size: 1.3em;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 0.2em;
+  box-shadow: 0 1px 4px #e11d4822;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+#logout-btn:hover, #logout-btn:focus {
+  background: #ffeaea;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 2px 8px #e11d4840;
+}
+
+/* style.css dosyanıza ekleyin */
+#login-wrapper img {
+  width: 80px;
+  display: block;
+  margin: 0 auto 1.2rem auto;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px #7ed95722;
+  background: #fff;
+}
+
+/* Ana başlıklar için özel stil */
+#markdown-container h1 {
+  color: var(--primary-dark);
+  margin-top: 3.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.01em;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* İlk başlık için üstte ekstra boşluk olmasın */
+#markdown-container h1:first-child {
+  margin-top: 0;
+}
+
+.collapsible-header {
+  cursor: pointer;
+  position: relative;
+  transition: background 0.15s;
+}
+
+.collapsible-header:hover {
+  background: #eaffea;
+}
+
+.collapsible-header::after {
+  content: "▼";
+  font-size: 0.9em;
+  color: #7ed957;
+  position: absolute;
+  right: 0.7em;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  transition: transform 0.2s;
+}
+
+.collapsible-header.collapsed::after {
+  transform: translateY(-50%) rotate(-90deg);
+}

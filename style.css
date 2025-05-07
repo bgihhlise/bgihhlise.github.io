@@ -356,15 +356,17 @@ article.card {
 
 @media (max-width: 1080px) {
   input, button {
-    width: 92%;
+    width: 49%;
     min-width: 0;
-    max-width: 96vw;
-    margin-left: 4%;
-    margin-right: 4%;
+    max-width: 60vw;
+    margin-left: 25.5%;
+    margin-right: 25.5%;
     box-sizing: border-box;
   }
   .password-row {
-    width: 100%;
+    width: 49%;
+    margin-left: 25.5%;
+    margin-right: 25.5%;
   }
   /* Göz butonu ve "Beni hatırla" masaüstüyle aynı kalsın */
   .eye-btn {

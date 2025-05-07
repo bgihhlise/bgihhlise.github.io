@@ -33,6 +33,28 @@ document.getElementById("pwd").addEventListener("keyup", e=>{
 });
 if (logoutBtn) logoutBtn.addEventListener("click", clearSession);
 
+// Toggle şifre göster/gizle
+const togglePassword = document.getElementById('toggle-password');
+if (togglePassword) {
+  togglePassword.addEventListener('click', () => {
+    const pwdField = document.getElementById('pwd');
+    const icon = togglePassword.querySelector('i');
+    if (pwdField.type === 'password') {
+      pwdField.type = 'text';
+      if (icon) {
+        icon.classList.replace('bi-eye', 'bi-eye-slash');
+      }
+      togglePassword.setAttribute('aria-label', 'Şifreyi gizle');
+    } else {
+      pwdField.type = 'password';
+      if (icon) {
+        icon.classList.replace('bi-eye-slash', 'bi-eye');
+      }
+      togglePassword.setAttribute('aria-label', 'Şifreyi göster');
+    }
+  });
+}
+
 function tryLogin() {
   const now = Date.now();
 

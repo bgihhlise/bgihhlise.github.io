@@ -1,6 +1,7 @@
 // ---- AYARLAR ----
 const CORRECT_HASH = "8b71bb7a6af8bb741e14b031176059ec6401bf467d5efb5ca0d2d8640b561c4e";
 const SESSION_DURATION_MS = 40 * 60 * 1000; // 40 dakika
+const REMEMBER_DURATION_MS = 14 * 24 * 60 * 60 * 1000; // 14 gün
 
 const loginWrapper   = document.getElementById("login-wrapper");
 const contentWrapper = document.getElementById("content-wrapper");
@@ -8,6 +9,7 @@ const btnLogin       = document.getElementById("btn-login");
 const msg            = document.getElementById("msg");
 const sessionTimer   = document.getElementById("session-timer");
 const logoutBtn      = document.getElementById("logout-btn");
+const rememberMe     = document.getElementById("remember-me"); // yeni satır
 
 let sessionInterval = null;
 
@@ -30,6 +32,25 @@ document.getElementById("pwd").addEventListener("keyup", e=>{
 });
 if (logoutBtn) logoutBtn.addEventListener("click", clearSession);
 
+// Şifreyi göster/gizle
+const pwdInput = document.getElementById("pwd");
+const togglePwdBtn = document.getElementById("toggle-pwd");
+const eyeIcon = document.getElementById("eye-icon");
+const eyeBall = document.getElementById("eye-ball");
+const eyeSlash = document.getElementById("eye-slash");
+
+if (togglePwdBtn && pwdInput && eyeSlash) {
+  togglePwdBtn.addEventListener("click", () => {
+    if (pwdInput.type === "password") {
+      pwdInput.type = "text";
+      eyeSlash.style.display = "block";
+    } else {
+      pwdInput.type = "password";
+      eyeSlash.style.display = "none";
+    }
+  });
+}
+
 function tryLogin() {
   const now = Date.now();
 
@@ -48,11 +69,16 @@ function tryLogin() {
   }
 
   const pwd = document.getElementById("pwd").value;
-  if (!pwd) return;
+  if (!pwd) {
+    msg.textContent = "Lütfen şifre giriniz!";
+    return;
+  }
 
   sha256(pwd).then(hash=>{
     if (hash === CORRECT_HASH) {
-      const expire = Date.now() + SESSION_DURATION_MS;
+      // Beni hatırla seçiliyse süreyi 14 gün yap
+      const duration = (rememberMe && rememberMe.checked) ? REMEMBER_DURATION_MS : SESSION_DURATION_MS;
+      const expire = Date.now() + duration;
       sessionStorage.setItem("loggedIn","true");
       sessionStorage.setItem("sessionExpire", expire);
       failCount = 0;
@@ -84,7 +110,13 @@ function showContent() {
   loginWrapper.style.display = "none";
   contentWrapper.style.display = "block";
   fetchAndRenderMarkdown();
-  startSessionTimer();
+  // Sayaç sadece "Beni hatırla" seçili değilse gösterilsin
+  if (rememberMe && rememberMe.checked) {
+    if (sessionTimer) sessionTimer.style.display = "none";
+  } else {
+    if (sessionTimer) sessionTimer.style.display = "";
+    startSessionTimer();
+  }
 }
 
 function clearSession() {
@@ -92,6 +124,7 @@ function clearSession() {
   sessionStorage.removeItem("sessionExpire");
   if (sessionInterval) clearInterval(sessionInterval);
   if (sessionTimer) sessionTimer.textContent = "";
+  if (sessionTimer) sessionTimer.style.display = "";
   loginWrapper.style.display = "block";
   contentWrapper.style.display = "none";
   document.getElementById("pwd").value = "";

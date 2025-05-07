@@ -9,7 +9,8 @@ const btnLogin       = document.getElementById("btn-login");
 const msg            = document.getElementById("msg");
 const sessionTimer   = document.getElementById("session-timer");
 const logoutBtn      = document.getElementById("logout-btn");
-const rememberMe     = document.getElementById("remember-me"); // yeni satır
+const rememberMe     = document.getElementById("remember-me");
+const pwdInput       = document.getElementById("pwd");
 
 let sessionInterval = null;
 
@@ -31,25 +32,6 @@ document.getElementById("pwd").addEventListener("keyup", e=>{
   if (e.key==="Enter") tryLogin();
 });
 if (logoutBtn) logoutBtn.addEventListener("click", clearSession);
-
-// Şifreyi göster/gizle
-const pwdInput = document.getElementById("pwd");
-const togglePwdBtn = document.getElementById("toggle-pwd");
-const eyeIcon = document.getElementById("eye-icon");
-const eyeBall = document.getElementById("eye-ball");
-const eyeSlash = document.getElementById("eye-slash");
-
-if (togglePwdBtn && pwdInput && eyeSlash) {
-  togglePwdBtn.addEventListener("click", () => {
-    if (pwdInput.type === "password") {
-      pwdInput.type = "text";
-      eyeSlash.style.display = "block";
-    } else {
-      pwdInput.type = "password";
-      eyeSlash.style.display = "none";
-    }
-  });
-}
 
 function tryLogin() {
   const now = Date.now();

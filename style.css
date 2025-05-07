@@ -354,6 +354,39 @@ article.card {
   }
 }
 
+@media (max-width: 1080px) {
+  input, button {
+    width: 92%;
+    min-width: 0;
+    max-width: 96vw;
+    margin-left: 4%;
+    margin-right: 4%;
+    box-sizing: border-box;
+  }
+  .password-row {
+    width: 100%;
+  }
+  /* Göz butonu ve "Beni hatırla" masaüstüyle aynı kalsın */
+  .eye-btn {
+    right: 0.7em;
+    height: 2em;
+    width: 2em;
+  }
+  .eye-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  .remember-label {
+    font-size: 0.98em;
+    gap: 0.5em;
+  }
+  .custom-checkbox {
+    width: 1.15em;
+    height: 1.15em;
+    border-radius: 0.35em;
+  }
+}
+
 /* Markdown içeriği için modern stiller */
 article h1, article h2, article h3 {
   color: var(--primary-dark);

@@ -319,6 +319,17 @@ article.card {
     height: 1.15em;
     border-radius: 0.35em;
   }
+  input, button {
+    width: 92%;
+    min-width: 0;
+    max-width: 96vw;
+    margin-left: 4%;
+    margin-right: 4%;
+    box-sizing: border-box;
+  }
+  .password-row {
+    width: 100%;
+  }
 }
 
 /* Mobilde göz ve "Beni hatırla" kutusu masaüstüyle aynı olsun */
